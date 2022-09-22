@@ -1,10 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IItem 
+public enum ItemType
 {
-    string getStats();
+    WEAPON,
+    SHIELD,
+    ACCESSORY,
+    CONSUMABLE
+}
 
-    string getType();
+public interface IItem : IPrototype<IItem>
+{
+    public ItemType itemType 
+    { 
+        get; 
+        set;
+    }
+    public string itemName 
+    {
+        get;
+        set;
+    }
+    public void addStat(string statName, int value);
+    public List<KeyValuePair<string, int>> getStats();
 }

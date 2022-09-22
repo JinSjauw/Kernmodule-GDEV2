@@ -6,17 +6,14 @@ public class SwordItem : ItemDecorator
 {
     public SwordItem(IItem baseItem) : base(baseItem)
     {
-        Debug.Log("Making it a Sword!");
-        Debug.Log("Adding damage!");
+        baseItem.itemType = ItemType.WEAPON;
+        baseItem.itemName = baseItem.itemName + " " + "Sword";
+        baseItem.addStat("ATK", 15);
+        baseItem.addStat("REACH", 3);
     }
 
-    public override string getStats()
+    public override List<KeyValuePair<string, int>> getStats()
     {
-        return base.getStats() + "Scrap that, +10 ATK +2 REACH";
-    }
-
-    public override string getType()
-    {
-        return base.getType() + "It's a Sword now";
+        return base.getStats();
     }
 }

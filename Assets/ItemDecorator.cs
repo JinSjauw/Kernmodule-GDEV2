@@ -4,20 +4,42 @@ using UnityEngine;
 
 public abstract class ItemDecorator : IItem
 {
-    protected IItem tempItem;
+    public IItem tempItem;
+    
+    ItemType IItem.itemType
+    {
+        get => tempItem.itemType;
+        set => tempItem.itemType = value;
+    }
 
-    public ItemDecorator(IItem baseItem) 
+    string IItem.itemName 
+    {
+        get => tempItem.itemName;
+        set => tempItem.itemName = value;
+    }
+
+    public ItemDecorator(IItem baseItem)
     {
         tempItem = baseItem;
     }
 
-    public virtual string getStats() 
+    public void addStat(string statName, int value)
+    {
+        tempItem.addStat(statName, value);
+    }
+
+    public virtual List<KeyValuePair<string, int>> getStats() 
     { 
         return tempItem.getStats(); 
     }
 
-    public virtual string getType() 
+    public object Clone()
     {
-        return tempItem.getType(); 
+        return (IItem)this.MemberwiseClone();
+    }
+
+    public IItem CreateDeepCopy()
+    {
+        return (IItem)MemberwiseClone();
     }
 }

@@ -1,16 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseItem : IItem
 {
-    public string getStats() 
-    { 
-        return "Base Item Stats"; 
+
+    ItemType _itemType;
+    ItemType IItem.itemType 
+    {
+        get => _itemType;
+        set => _itemType = value;
     }
 
-    public string getType() 
+    string _itemName;
+    string IItem.itemName 
+    {
+        get => _itemName;
+        set => _itemName = value;
+    }
+
+    List<KeyValuePair<string, int>> statList;
+
+    public BaseItem() 
+    {
+        statList = new List<KeyValuePair<string, int>>();
+    }
+
+    public void addStat(string statName, int value) 
+    {
+        statList.Add(new KeyValuePair<string, int>(statName, value));
+    }
+
+    public List<KeyValuePair<string, int>> getStats() 
     { 
-        return "Base Item Type"; 
+        return statList; 
+    }
+
+    public IItem CreateDeepCopy() 
+    {
+        return (IItem)base.MemberwiseClone();
     }
 }
