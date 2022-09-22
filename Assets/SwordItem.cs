@@ -11,9 +11,4 @@ public class SwordItem : ItemDecorator
         baseItem.addStat("ATK", 15);
         baseItem.addStat("REACH", 3);
     }
-
-    public override List<KeyValuePair<string, int>> getStats()
-    {
-        return base.getStats();
-    }
 }

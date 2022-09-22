@@ -20,13 +20,13 @@ public class ItemCreation : MonoBehaviour
         basicSword = new SwordItem(basicSword);
         basicShield = new ShieldItem(basicShield);
 
-        printItem(basicSword);
-        printItem(basicShield);
-        printItem(clonedSword);
-        printItem(clonedShield);
+        PrintItem(basicSword);
+        PrintItem(basicShield);
+        PrintItem(clonedSword);
+        PrintItem(clonedShield);
     }
 
-    void printItem(IItem item) 
+    void PrintItem(IItem item) 
     {
         string itemInfo = "";
 
